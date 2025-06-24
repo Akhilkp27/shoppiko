@@ -113,3 +113,7 @@ return [
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
 ];
+use Illuminate\Support\Facades\Hash;
+
+Hash::make('password');
+
