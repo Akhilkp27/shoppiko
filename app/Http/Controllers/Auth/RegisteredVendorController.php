@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+class RegisteredVendorController extends Controller
 {
     /**
      * Display the registration view.
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('auth.vendor-register');
     }
 
     /**
@@ -39,15 +39,15 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'is_vendor' => 0,
+            'is_vendor' => 1,
         ]);
 
         event(new Registered($user));
 
-        $user->assignRole('customer');
+        $user->assignRole('vendor');
 
         Auth::login($user);
 
-        return redirect(route('customer.dashboard', absolute: false));
+        return redirect(route('vendor.dashboard', absolute: false));
     }
 }

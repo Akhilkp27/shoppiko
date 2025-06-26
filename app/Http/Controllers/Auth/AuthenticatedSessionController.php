@@ -32,9 +32,13 @@ class AuthenticatedSessionController extends Controller
             // Role-based redirection
             if ($user->hasRole('admin')) {
                 return redirect()->route('admin.dashboard');
-            } elseif ($user->hasRole('vendor')) {
+            }
+
+            if ($user->hasRole('vendor')) {
                 return redirect()->route('vendor.dashboard');
-            } elseif ($user->hasRole('customer')) {
+            }
+
+            if ($user->hasRole('customer')) {
                 return redirect()->route('customer.dashboard');
             }
 
