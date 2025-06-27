@@ -1,47 +1,126 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoppiko Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+  <style>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+  </style>
+</head>
+<body>
+<a href="{{ url('/') }}" class="back-home-fixed"><i class="fa-solid fa-house"></i> Home</a>
+  <!-- Optional: Background Particles -->
+  {{-- <div id="particles-js"></div> --}}
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+  <!-- Session Status -->
+  @if (session('status'))
+    <div class="session-status">
+      {{ session('status') }}
+    </div>
+  @endif
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+  <!-- Login Form -->
+  <form method="POST" action="{{ route('login') }}" class="login-box">
+    @csrf
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+    <h2>Welcome Back 👋</h2>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+    <!-- Email Address -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        value="{{ old('email') }}"
+        required
+        autofocus
+        autocomplete="username"
+      />
+      @error('email')
+        <div class="input-error">{{ $message }}</div>
+      @enderror
+    </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    <!-- Password -->
+    <div class="form-group password-group">
+  <label for="password">Password</label>
+  <div class="password-wrapper">
+    <input
+      id="password"
+      type="password"
+      name="password"
+      required
+      autocomplete="current-password"
+    />
+    <button type="button" class="toggle-password" onclick="togglePassword()">
+      🔓
+    </button>
+  </div>
+  @error('password')
+    <div class="input-error">{{ $message }}</div>
+  @enderror
+</div>
+
+    <!-- Remember Me -->
+    <div class="form-group remember-me">
+      <label for="remember_me">
+        <input
+          id="remember_me"
+          type="checkbox"
+          name="remember"
+        />
+        <span>Remember me</span>
+      </label>
+    </div>
+
+    <!-- Forgot Password -->
+    @if (Route::has('password.request'))
+      <div class="form-group forgot-password text-right">
+        <a href="{{ route('password.request') }}">Forgot your password?</a>
+      </div>
+    @endif
+
+    <!-- Submit Button -->
+    <button type="submit" class="login-btn">Login</button>
+
+    <!-- Divider -->
+    <div class="divider"><span>or continue with</span></div>
+
+    <!-- Social Login -->
+    <div class="social-login">
+      <button type="button" class="social-btn google-btn">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Icon" />
+        Continue with Google
+      </button>
+    </div>
+
+    <!-- Register Link -->
+    <div class="login-footer">
+      <p>Don't have an account? <a href="{{ route('register') }}">Register</a></p>
+    </div>
+  </form>
+
+  <!-- Particles JS -->
+
+  <script>
+  function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const toggleBtn = event.currentTarget;
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleBtn.textContent = "🔒";
+    } else {
+      passwordInput.type = "password";
+      toggleBtn.textContent = "🔓";
+    }
+  }
+</script>
+</body>
+</html>
