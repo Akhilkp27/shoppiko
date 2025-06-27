@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -31,4 +32,10 @@ Route::middleware(['auth', 'role:vendor'])->prefix('vendor')->name('vendor.')->g
 Route::middleware(['auth', 'role:customer'])->prefix('customer')->name('customer.')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Customer\DashboardController::class, 'index'])->name('dashboard');
 });
+
+// Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/shop', [PageController::class, 'shop'])->name('shop');
+Route::get('/categories', [PageController::class, 'categories'])->name('categories');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 require __DIR__.'/auth.php';

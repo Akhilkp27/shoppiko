@@ -115,45 +115,7 @@
     </div>
 
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">Lumina<span>Shop</span></div>
-
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="#" class="nav-link">Home</a></li>
-                    <li><a href="#" class="nav-link">Shop</a></li>
-                    <li><a href="#" class="nav-link">Categories</a></li>
-                    <li><a href="#" class="nav-link">About</a></li>
-                    <li><a href="#" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        <div class="header-actions">
-            <div class="auth-buttons">
-                <a href="{{ route('login') }}" class="btn btn-outline btn-login">Login</a>
-                <a href="{{ route('register') }}" class="btn btn-primary btn-signup">Sign Up</a>
-
-            </div>
-            {{-- <div class="header-icons">
-                <a href="#" class="search-toggle"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-                <a href="#" id="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-                <div class="mobile-menu" id="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div> --}}
-        </div>
-            <!-- Search Bar -->
-            <div class="search-bar">
-                <input type="text" placeholder="Search products...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-                <button class="close-search">&times;</button>
-            </div>
-        </div>
-    </header>
+   @include('partials.header')
 
     <!-- Hero Section -->
     <section class="hero">
@@ -368,60 +330,10 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>LuminaShop</h3>
-                    <p>Your one-stop shop for all your fashion and lifestyle needs. Quality products at affordable prices.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Customer Service</h3>
-                    <ul>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Return Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Street, City, Country</li>
-                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                        <li><i class="fas fa-envelope"></i> info@luminashop.com</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2023 LuminaShop. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+   @include('partials.footer')
 
    <script src="{{ asset('js/script.js') }}"></script>
-   {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+
 
 
 </body>
