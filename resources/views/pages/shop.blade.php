@@ -1,262 +1,212 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop | LuminaShop</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/shop.css') }}">
-</head>
-<body>
-    <!-- Header -->
-    @include('partials.header')
+@extends('layouts.storefront')
+@section('content')
 
-    <!-- Hero Section -->
-    <section class="shop-hero">
-        <div class="container">
-            <h1>Our Products</h1>
-            <p>Discover our premium collection</p>
+<link rel="stylesheet" href="{{ asset('css/shop.css') }}">
+    <!-- Shop Page Content -->
+    <main class="shop-container">
+        <div class="shop-header">
+            <h1 class="shop-title">Our Products</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search products...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
         </div>
-    </section>
 
-    <!-- Breadcrumbs -->
-    <div class="container breadcrumbs">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <a href="shop.html">Shop</a>
+        <div class="shop-filters">
+            <div class="filter-group">
+                <button class="filter-btn active">All Products</button>
+                <button class="filter-btn">Men's</button>
+                <button class="filter-btn">Women's</button>
+                <button class="filter-btn">Accessories</button>
+                <button class="filter-btn">Footwear</button>
+            </div>
+            <div class="filter-group">
+                <label for="sort">Sort by:</label>
+                <select id="sort" class="sort-select">
+                    <option>Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest</option>
+                    <option>Best Selling</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <span class="product-badge">New</span>
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80" alt="Product" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <div class="product-name">Premium Leather Watch</div>
+                    <div class="product-price">
+                        <div class="price">$129.99</div>
+                        <div class="add-to-cart">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <span class="product-badge">Sale</span>
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Product" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Women's Fashion</div>
+                    <div class="product-name">Elegant Summer Dress</div>
+                    <div class="product-price">
+                        <div class="price">$89.99 <span class="old-price">$129.99</span></div>
+                        <div class="add-to-cart">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80" alt="Product" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Footwear</div>
+                    <div class="product-name">Designer Running Shoes</div>
+                    <div class="product-price">
+                        <div class="price">$149.99</div>
+                        <div class="add-to-cart">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Product" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Men's Fashion</div>
+                    <div class="product-name">Classic Formal Suit</div>
+                    <div class="product-price">
+                        <div class="price">$249.99</div>
+                        <div class="add-to-cart">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <span class="product-badge">New</span>
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80" alt="Product" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <div class="product-name">Premium Leather Watch</div>
+                    <div class="product-price">
+                        <div class="price">$129.99</div>
+                        <div class="add-to-cart">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <span class="product-badge">Sale</span>
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Product" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Women's Fashion</div>
+                    <div class="product-name">Elegant Summer Dress</div>
+                    <div class="product-price">
+                        <div class="price">$89.99 <span class="old-price">$129.99</span></div>
+                        <div class="add-to-cart">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80" alt="Product" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Footwear</div>
+                    <div class="product-name">Designer Running Shoes</div>
+                    <div class="product-price">
+                        <div class="price">$149.99</div>
+                        <div class="add-to-cart">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+        <span class="product-badge">New</span>
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80" alt="Product" class="product-img">
+        <div class="product-info">
+            <div class="product-category">Accessories</div>
+            <div class="product-name">Premium Leather Watch</div>
+            <div class="product-price">
+                <div class="price">$129.99</div>
+            </div>
+            <div class="product-actions">
+                {{-- <button class="view-btn" onclick="viewProduct('premium-leather-watch')">
+                    <i class="far fa-eye"></i> View
+                </button> --}}
+                <a class="view-btn" href="{{ route('product-details') }}"><i class="far fa-eye"></i> View</a>
+                <div class="add-to-cart">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+        </div>
     </div>
+        </div>
 
-    <!-- Main Content -->
-    <main class="shop-main">
-        <!-- Sidebar Filters -->
-        <aside class="shop-sidebar" id="shopSidebar">
-            <div class="sidebar-section">
-                <h3>Categories</h3>
-                <div class="filter-options">
-                    <label>
-                        <input type="checkbox" checked>
-                        <span class="checkmark"></span>
-                        All Products
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Home Decor
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Kitchenware
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Furniture
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Lighting
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Textiles
-                    </label>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Price Range</h3>
-                <input type="range" class="price-range" min="0" max="500" value="250">
-                <div class="price-values">
-                    <span>$0</span>
-                    <span>$250</span>
-                    <span>$500+</span>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Colors</h3>
-                <div class="color-options">
-                    <button class="color-option" data-color="black" style="background-color: #000;"></button>
-                    <button class="color-option" data-color="white" style="background-color: #fff; border: 1px solid #eee;"></button>
-                    <button class="color-option" data-color="blue" style="background-color: #3498db;"></button>
-                    <button class="color-option" data-color="green" style="background-color: #2ecc71;"></button>
-                    <button class="color-option" data-color="red" style="background-color: #e74c3c;"></button>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Materials</h3>
-                <div class="filter-options">
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Wood
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Metal
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Ceramic
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Glass
-                    </label>
-                    <label>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Textile
-                    </label>
-                </div>
-            </div>
-
-            <button class="btn btn-primary apply-filters">Apply Filters</button>
-            <button class="btn btn-secondary reset-filters">Reset All</button>
-        </aside>
-
-        <!-- Products Section -->
-        <div class="shop-content">
-            <div class="shop-header">
-                <div class="results-count">Showing 24 of 86 products</div>
-                <div class="sort-options">
-                    <span>Sort by:</span>
-                    <select>
-                        <option>Featured</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Newest Arrivals</option>
-                        <option>Best Rated</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="products-grid">
-                <!-- Product Card 1 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Modern Table Lamp">
-                        <span class="product-badge">New</span>
-                        <div class="product-actions">
-                            <button class="quick-view"><i class="fas fa-eye"></i></button>
-                            <button class="add-wishlist"><i class="far fa-heart"></i></button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Aurora Table Lamp</h3>
-                        <div class="product-price">
-                            <span class="current-price">$89.99</span>
-                            <span class="old-price">$129.99</span>
-                        </div>
-                        <div class="product-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="review-count">(42)</span>
-                        </div>
-                        <button class="btn btn-primary add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Repeat other product cards similarly -->
-
-            </div>
-
-            <div class="pagination">
-                <a href="#"><i class="fas fa-chevron-left"></i></a>
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <span>...</span>
-                <a href="#">8</a>
-                <a href="#"><i class="fas fa-chevron-right"></i></a>
-            </div>
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
     </main>
 
-    <!-- Mobile Filter Button -->
-    <button class="mobile-filter-btn" id="mobileFilterBtn">
-        <i class="fas fa-filter"></i> Filters
-    </button>
-
-    <!-- Featured Collection -->
-    <section class="featured-collection">
-        <div class="container">
-            <h2 class="section-title">Featured Collection</h2>
-            <div class="collection-slider">
-                <div class="collection-item">
-                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Decorative Pillows">
-                    <h3>Decorative Pillows</h3>
-                    <a href="#" class="shop-link">Shop Now <i class="fas fa-arrow-right"></i></a>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
                 </div>
-                <!-- Other collection items -->
+                <h3 class="feature-title">Free Shipping</h3>
+                <p>Enjoy free shipping on all orders over $50. Delivery within 3-5 business days.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">Secure Payment</h3>
+                <p>Your payments are secure with our 256-bit encryption. Shop with confidence.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-undo"></i>
+                </div>
+                <h3 class="feature-title">Easy Returns</h3>
+                <p>Not satisfied? Return within 30 days for a full refund. No questions asked.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="feature-title">24/7 Support</h3>
+                <p>Our customer support team is available round the clock to assist you.</p>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    @include('partials.footer')
-
-    <script>
-        // Mobile Filter Toggle
-        document.getElementById('mobileFilterBtn').addEventListener('click', function() {
-            document.getElementById('shopSidebar').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-
-        // Price Range Display Update
-        const priceRange = document.querySelector('.price-range');
-        if (priceRange) {
-            priceRange.addEventListener('input', function() {
-                const priceDisplay = this.parentElement.querySelector('.price-values span:nth-child(2)');
-                if (priceDisplay) {
-                    priceDisplay.textContent = `$${this.value}`;
-                }
-            });
-        }
-
-        // Filter Counter
-        document.querySelectorAll('.filter-options').forEach(container => {
-            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-            const header = container.previousElementSibling;
-
-            if (header && header.tagName === 'H3') {
-                header.dataset.originalText = header.textContent;
-
-                const updateCounter = () => {
-                    const checkedCount = container.querySelectorAll('input:checked').length;
-                    header.textContent = checkedCount > 0
-                        ? `${header.dataset.originalText} (${checkedCount})`
-                        : header.dataset.originalText;
-                };
-
-                checkboxes.forEach(checkbox => {
-                    checkbox.addEventListener('change', updateCounter);
-                });
-            }
-        });
-
-        // Color Selection
-        document.querySelectorAll('.color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.color-option').forEach(opt => {
-                    opt.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-    </script>
-</body>
-</html>
+<script src="{{ asset('js/shop.js') }}"></script>
+@endsection

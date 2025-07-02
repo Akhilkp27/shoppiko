@@ -1,59 +1,36 @@
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+       // Contact Form Submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
 
-    const form = e.target;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.textContent;
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
 
-    try {
-        // Show loading state
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+                    // Get form values
+                    const firstName = document.getElementById('firstName').value;
+                    const lastName = document.getElementById('lastName').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
 
-        const formData = {
-            name: form.querySelector('#name').value,
-            email: form.querySelector('#email').value,
-            subject: form.querySelector('#subject').value,
-            message: form.querySelector('#message').value
-        };
+                    // Here you would typically send the data to a server
+                    // For this example, we'll just show an alert
+                    alert(`Thank you, ${firstName} ${lastName}! Your message has been sent. We'll get back to you soon at ${email}.`);
 
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
 
-        if (response.ok) {
-            alert('Thank you! Your message has been sent.');
-            form.reset();
-        } else {
-            throw new Error('Failed to send message');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('There was an error sending your message. Please try again.');
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
-    }
-});
-        // Contact Form Handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-
-            // Add your form submission logic here
-            console.log('Form submitted:', formData);
-
-            // Simulate successful submission
-            alert('Thank you for your message! We\'ll respond within 24 hours.');
-            this.reset();
+            // Add to cart animation (if cart icon is clicked)
+            const cartIcon = document.querySelector('.nav-icons a[href="checkout.html"]');
+            if (cartIcon) {
+                cartIcon.addEventListener('click', function(e) {
+                    // Animation
+                    this.style.transform = 'translateY(-3px)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                });
+            }
         });

@@ -25,4 +25,12 @@ class PageController extends Controller
     public function contact() {
         return view('pages.contact');
     }
+    public function productDetails()
+    {
+        return view('pages.product-details');
+    }
+    public function checkOut()
+    {
+        return view('pages.checkout');
+    }
 }

@@ -39,4 +39,6 @@ Route::get('/shop', [PageController::class, 'shop'])->name('shop');
 Route::get('/categories', [PageController::class, 'categories'])->name('categories');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/product-details', [PageController::class, 'productDetails'])->name('product-details');
+Route::get('/product-checkout', [PageController::class, 'checkOut'])->name('product-checkout');
 require __DIR__.'/auth.php';
