@@ -1,4 +1,4 @@
- <header>
+ {{-- <header>
         <div class="container header-container">
             <div class="logo">Lumina<span>Shop</span></div>
 
@@ -17,17 +17,7 @@
                 <a href="{{ route('register') }}" class="btn btn-primary btn-signup">Sign Up</a>
 
             </div>
-            {{-- <div class="header-icons">
-                <a href="#" class="search-toggle"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-                <a href="#" id="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-                <div class="mobile-menu" id="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div> --}}
+
         </div>
             <!-- Search Bar -->
             <div class="search-bar">
@@ -36,4 +26,43 @@
                 <button class="close-search">&times;</button>
             </div>
         </div>
+    </header> --}}
+<header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i>
+                StyleHub
+            </a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">Categories</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">Deals</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="header-actions">
+            <div class="auth-buttons">
+
+                <a href="{{ route('login') }}" class="auth-button login-btn">🔐 Login</a>
+                <a href="{{ route('register') }}" class="auth-button register-btn">✨ Register</a>
+            </div>
+<style>
+
+</style>
+
+<!-- Login & Register Buttons -->
+
+
+
+        </div>
+            {{-- <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div> --}}
+        </nav>
     </header>

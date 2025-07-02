@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,8 +33,8 @@ Route::middleware(['auth', 'role:vendor'])->prefix('vendor')->name('vendor.')->g
 Route::middleware(['auth', 'role:customer'])->prefix('customer')->name('customer.')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Customer\DashboardController::class, 'index'])->name('dashboard');
 });
-
 // Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/vendor', [VendorController::class, 'index'])->name('vendor.home');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
 Route::get('/categories', [PageController::class, 'categories'])->name('categories');
 Route::get('/about', [PageController::class, 'about'])->name('about');

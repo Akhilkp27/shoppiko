@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories | LuminaShop</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+@extends('layouts.storefront')
+@section('content')
     <link rel="stylesheet" href="{{ asset('css/category.css') }}">
-
-</head>
-<body>
-    <!-- Header -->
-    @include('partials.header')
-
     <!-- Hero Section -->
     <section class="category-hero">
         <div class="container">
@@ -165,7 +153,8 @@
                 <!-- Product Cards (Reuse your existing product card component) -->
                 <div class="product-card">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Wireless Headphones">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
+                            alt="Wireless Headphones">
                         <span class="product-badge">Sale</span>
                     </div>
                     <div class="product-info">
@@ -203,106 +192,5 @@
     <button class="mobile-filter-btn" id="mobileFilterBtn">
         <i class="fas fa-filter"></i> Filters
     </button>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <!-- Your existing footer content -->
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 LuminaShop. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    
-    <script>
-        // Initialize category page functionality
-function initCategoryPage() {
-    // Mobile filter toggle
-    const filterBtn = document.getElementById('mobileFilterBtn');
-    const sidebar = document.getElementById('categorySidebar');
-
-    if (filterBtn && sidebar) {
-        filterBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            filterBtn.classList.toggle('active');
-        });
-    }
-
-    // Price range display
-    const priceRange = document.querySelector('.price-range');
-    if (priceRange) {
-        const updatePriceDisplay = () => {
-            const value = priceRange.value;
-            const priceDisplay = priceRange.parentElement.querySelector('.price-values span:nth-child(2)');
-            if (priceDisplay) {
-                priceDisplay.textContent = `$${value}`;
-            }
-        };
-
-        priceRange.addEventListener('input', updatePriceDisplay);
-        updatePriceDisplay(); // Initialize display
-    }
-
-    // Filter counter
-    document.querySelectorAll('.filter-options').forEach(container => {
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-        const header = container.previousElementSibling;
-
-        if (header && header.tagName === 'H3') {
-            header.dataset.originalText = header.textContent;
-
-            const updateCounter = () => {
-                const checkedCount = container.querySelectorAll('input:checked').length;
-                header.textContent = checkedCount > 0
-                    ? `${header.dataset.originalText} (${checkedCount})`
-                    : header.dataset.originalText;
-            };
-
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', updateCounter);
-            });
-        }
-    });
-}
-
-// Call on page load
-document.addEventListener('DOMContentLoaded', initCategoryPage);
-        // Mobile Filter Toggle
-        document.getElementById('mobileFilterBtn').addEventListener('click', function() {
-            document.getElementById('categorySidebar').classList.toggle('active');
-        });
-
-        // Price Range Visual Update
-        const priceRange = document.querySelector('.price-range');
-        if (priceRange) {
-            priceRange.addEventListener('input', function() {
-                const priceValues = this.parentElement.querySelectorAll('.price-values span');
-                priceValues[1].textContent = `$${this.value}`;
-            });
-        }
-
-        // Filter Checkbox Counter
-        const filterCheckboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
-        filterCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                const section = this.closest('.sidebar-section');
-                const checkedCount = section.querySelectorAll('input:checked').length;
-
-                // Update section header with count
-                const header = section.querySelector('h3');
-                const originalText = header.dataset.originalText || header.textContent;
-                header.dataset.originalText = originalText;
-
-                if (checkedCount > 0) {
-                    header.textContent = `${originalText} (${checkedCount})`;
-                } else {
-                    header.textContent = originalText;
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    <script src="{{ asset('js/category.js') }}"></script>
+@endsection
